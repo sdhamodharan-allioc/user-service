@@ -1,0 +1,7 @@
+curl --location --request POST 'http://localhost:9080/v1/user' \
+--header 'x-user-id: admin' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Balaji",
+    "emailId": "brengan@yopmail.com"
+}'

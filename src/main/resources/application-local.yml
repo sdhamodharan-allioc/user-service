@@ -1,0 +1,9 @@
+server:
+  port: 9070
+
+spring:
+  data:
+    mongodb:
+      database: user
+      uri: mongodb://localhost:27017
+      auto-index-creation: true

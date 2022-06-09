@@ -1,0 +1,15 @@
+server:
+  port: 9070
+app:
+  version: V1
+
+spring:
+  mvc:
+    throws-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  data:
+    mongodb:
+      database: ${DATABASE}
+      uri: mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${ATLAS_ADDRESS}/${DATABASE}
+      auto-index-creation: true

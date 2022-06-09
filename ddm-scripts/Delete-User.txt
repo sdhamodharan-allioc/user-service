@@ -1,0 +1,2 @@
+curl --location --request DELETE 'http://localhost:9080/v1/user/allioc:user:6e37d2fe-a859-4f68-a02c-c5f044520292' \
+--header 'x-user-id: admin'

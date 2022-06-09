@@ -1,0 +1,50 @@
+---
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "microservices"
+  namespace: "default"
+  labels:
+    app: "userservice"  
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "userservice"
+  template:
+    metadata:
+      labels:
+        app: "userservice"
+    spec:
+      containers:
+      - name: "userservice"
+        image: "gcr.io/diesel-media-340214/userservice:latest"
+        imagePullPolicy: "Always"
+        ports: 
+        - containerPort: 8070
+          name: "userservice"  
+        env:
+        - name: "MONGO_USER"
+          value: "allioc_dev_db_user_2"
+        - name: "MONGO_PASSWORD"
+          value: "FYL8BuEq95T2kTy5"
+        - name: "ATLAS_ADDRESS"
+          value: "cluster0.btdhb.mongodb.net"
+        - name: "DATABASE"
+          value: "Allioc"
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "userservice"
+  namespace: "default"
+  labels:
+    app: "userservice"
+spec:
+  ports: 
+  - port: 80
+    targetPort: 8070
+  selector: 
+    app: "userservice"
+    tier: "userservice"
+  type: "LoadBalancer"
